@@ -1,0 +1,71 @@
+#include <stdio.h>
+#define SIZE 5
+
+int stack[SIZE];
+int top=-1;
+void push(int value)
+{
+    if (top == SIZE - 1){
+      printf("stack overflow cant push %d\n",value);
+    }
+    else{
+      top++;
+      stack[top]=value;
+      printf("%d pushed into stack\n",value);
+    }
+}
+
+void pop(){
+  if(top == -1){
+    printf("stack is underflow \n");
+  }
+  else{
+    printf("%d delete from stack\n",stack[top]);
+    top--;
+  }
+}
+
+void peek(){
+  if(top==-1){
+    printf("stack is empty");
+  }
+  else{
+     printf("%d Top Element from stack\n",stack[top]);
+  }
+}
+
+void search(int key){
+  for(int i=0;i<=top;i++){
+    if(stack[i] == key){
+      printf("found\n");
+      return;
+    }
+  }
+  printf("Not found\n");
+}
+
+void display()
+{
+  if(top==-1){
+    printf("stack is empty.\n");
+  }
+  else{
+    printf("stack elements: ");
+    for(int i=0;i<=top;i++){
+      printf("%d ",stack[i]);
+      }
+      printf("\n");
+  }
+}
+
+int main(){
+  push(10);
+  push(20);
+  push(30);
+  push(40);
+  push(50);
+  search(30);
+  display();
+  pop();
+  peek();
+}
