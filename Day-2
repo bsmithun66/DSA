@@ -1,20 +1,19 @@
+//Enhance your coding skills, start writing your code here!!
 #include <stdio.h>
 #define MAX 5
 
 int stack[MAX];
 int top = -1;
 
-// Function to push element
 void push(int val) {
     if (top == MAX - 1) {
-        printf("Stack is full. Cannot push %d\n", val);
+        printf("Stack overflow! Cannot push %d\n", val);
     } else {
         stack[++top] = val;
         printf("%d pushed to stack\n", val);
     }
 }
 
-// Function to pop element
 void pop() {
     if (top == -1) {
         printf("Stack is empty. Cannot pop\n");
@@ -23,7 +22,6 @@ void pop() {
     }
 }
 
-// Function to check if stack is empty
 void isEmpty() {
     if (top == -1)
         printf("The stack is empty.\n");
@@ -31,7 +29,6 @@ void isEmpty() {
         printf("The stack is not empty. Current size: %d\n", top + 1);
 }
 
-// Function to check if stack is full
 void isFull() {
     if (top == MAX - 1)
         printf("The stack is full.\n");
@@ -42,8 +39,8 @@ void isFull() {
 int main() {
     int command, value;
 
-    while (1) {
-        scanf("%d", &command);
+    while (scanf("%d", &command) == 1) {
+        
 
         switch (command) {
             case 1:
@@ -63,8 +60,9 @@ int main() {
                 printf("Exiting...\n");
                 return 0;
             default:
-                printf("Invalid command\n");
+                printf("Invalid choice! Please try again.\n");
         }
     }
+    printf("Exiting...\n");
     return 0;
 }
