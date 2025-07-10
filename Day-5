@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+int queue[MAX];
+int front = 0, rear = 0;
+
+void enqueue(int x) {
+    if (rear >= MAX) {
+        printf("Queue is full!\n");
+    } else {
+        queue[rear++] = x;
+        printf("Enqueued:%d\n", x);
+    }
+}
+
+void dequeue() {
+    if (front == rear) {
+        printf("Queue is empty!\n");
+    } else {
+        printf("Dequeued:%d\n", queue[front++]);
+    }
+}
+
+int main() {
+    int choice, x;
+
+    while (1) {
+        if (scanf("%d", &choice) != 1) break;
+
+        printf("%d\n", choice); // Print the choice as in the input
+
+        switch (choice) {
+            case 1:
+                if (scanf("%d", &x) != 1) {
+                    printf("Invalid choice!\n");
+                    continue;
+                }
+                enqueue(x);
+                break;
+            case 2:
+                dequeue();
+                break;
+            case 3:
+                printf("Exiting...\n");
+                return 0;
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+
+    return 0;
+}
